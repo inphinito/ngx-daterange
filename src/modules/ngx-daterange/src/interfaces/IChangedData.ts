@@ -1,7 +1,7 @@
-import * as momentNs from 'moment';
+import * as moment from 'moment';
 
 export interface IChangedData {
-  isLeft?: boolean;
-  day?: momentNs.Moment;
-  value?: number;
+	isLeft?: boolean;
+	day?: moment.Moment;
+	value?: number;
 }

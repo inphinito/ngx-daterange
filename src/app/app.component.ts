@@ -4,97 +4,95 @@ import * as moment from 'moment';
 
 import { DateRangePickerComponent } from '../modules/ngx-daterange/src/components/datepicker/date-range-picker.component';
 import { IDateRange, IDateRangePickerOptions } from '../modules/ngx-daterange/src/interfaces';
-
 @Component({
-  encapsulation: ViewEncapsulation.None,
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+	encapsulation: ViewEncapsulation.None,
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
 
-  @ViewChild('dateRangePicker', { static: true })
-  dateRangePicker: DateRangePickerComponent;
+	@ViewChild('dateRangePicker', { static: true })
+	dateRangePicker: DateRangePickerComponent;
 
-  firstFieldEmittedValue: IDateRange;
-  firstFieldOptions: IDateRangePickerOptions = {
-    autoApply: false,
-    format: 'MM/DD/YYYY',
-    icons: 'material',
-    minDate: moment().subtract(10, 'years'),
-    maxDate: moment().add(3, 'years'),
-    preDefinedRanges: [
-      {
-        name: 'Last Week',
-        value: {
-          start: moment().subtract(1, 'week').startOf('week'),
-          end: moment().subtract(1, 'week').endOf('week')
-        }
-      },
-      {
-        name: 'Two Weeks Ago',
-        value: {
-          start: moment().subtract(2, 'week').startOf('week'),
-          end: moment().subtract(2, 'week').endOf('week')
-        }
-      }
-    ],
-    validators: Validators.required,
-  }
+	firstFieldEmittedValue: IDateRange;
+	firstFieldOptions: IDateRangePickerOptions = {
+		autoApply: false,
+		format: 'DD/MM/YYYY',
+		icons: 'font-awesome',
+		minDate: moment().subtract(10, 'years'),
+		maxDate: moment().add(3, 'years'),
+		preDefinedRanges: [
+			{
+				name: 'Last Week',
+				value: {
+					start: moment().subtract(1, 'week').startOf('week'),
+					end: moment().subtract(1, 'week').endOf('week')
+				}
+			},
+			{
+				name: 'Two Weeks Ago',
+				value: {
+					start: moment().subtract(2, 'week').startOf('week'),
+					end: moment().subtract(2, 'week').endOf('week')
+				}
+			}
+		],
+		validators: Validators.required,
+	}
 
-  secondFieldOptions: IDateRangePickerOptions = {
-    autoApply: false,
-    clickOutsideAllowed: false,
-    format: 'MM/DD/YYYY',
-    icons: 'font-awesome',
-    minDate: moment().subtract(10, 'years'),
-    maxDate: moment().add(1, 'year'),
-  }
+	secondFieldOptions: IDateRangePickerOptions = {
+		autoApply: false,
+		clickOutsideAllowed: false,
+		format: 'DD/MM/YYYY',
+		icons: 'font-awesome',
+		minDate: moment().subtract(10, 'years'),
+		maxDate: moment().add(1, 'year'),
+	}
 
-  rightFieldOptions: IDateRangePickerOptions = {
-    format: 'MM/DD/YYYY',
-    icons: 'material',
-    minDate: moment().subtract(2, 'years'),
-    maxDate: moment().add(1, 'year'),
-    position: 'right',
-  }
+	rightFieldOptions: IDateRangePickerOptions = {
+		format: 'DD/MM/YYYY',
+		icons: 'material',
+		minDate: moment().subtract(2, 'years'),
+		maxDate: moment().add(1, 'year'),
+		position: 'right',
+	}
 
-  singleFieldOptions: IDateRangePickerOptions = {
-    autoApply: true,
-    clickOutsideAllowed: false,
-    format: 'MM/DD/YYYY',
-    icons: 'material',
-    labelText: 'Single Picker',
-    minDate: moment().subtract(2, 'years'),
-    maxDate: moment().add(1, 'year'),
-    singleCalendar: true,
-  }
+	singleFieldOptions: IDateRangePickerOptions = {
+		autoApply: true,
+		clickOutsideAllowed: false,
+		format: 'DD/MM/YYYY',
+		icons: 'material',
+		labelText: 'Single Picker',
+		minDate: moment().subtract(2, 'years'),
+		maxDate: moment().add(1, 'year'),
+		singleCalendar: true,
+	}
 
-  disableInputDisplayOptions: IDateRangePickerOptions = {
-    disableInputDisplay: true,
-    format: 'MM/DD/YYYY',
-    icons: 'material',
-    labelText: 'Input Display Disabled',
-    minDate: moment().subtract(2, 'years'),
-    maxDate: moment().add(1, 'year')
-  };
+	disableInputDisplayOptions: IDateRangePickerOptions = {
+		disableInputDisplay: true,
+		format: 'DD/MM/YYYY',
+		icons: 'material',
+		labelText: 'Input Display Disabled',
+		minDate: moment().subtract(2, 'years'),
+		maxDate: moment().add(1, 'year')
+	};
 
-  form: FormGroup = null;
+	form: FormGroup = this.formBuilder.group({
+		firstDateRange: []
+	});
 
-  constructor (
-    private formBuilder: FormBuilder,
-  ) {}
+	constructor(
+		private formBuilder: FormBuilder,
+	) { }
 
-  ngOnInit(): void {
-    // setup "parent" form group for the date piker instance to add itself to.
-    this.form = this.formBuilder.group({});
-  }
+	ngOnInit(): void { }
 
-  onRangeSelected(value: IDateRange): void {
-    this.firstFieldEmittedValue = value;
-  }
+	onRangeSelected(value: IDateRange): void {
+		this.firstFieldEmittedValue = value;
+	}
 
-  onReset(event: Event): void {
-    this.dateRangePicker.reset(event);
-  }
+	onReset(event: Event): void {
+		this.dateRangePicker.reset(event);
+	}
 }
