@@ -21,4 +21,4 @@ const declarations = [
     ReactiveFormsModule,
   ],
 })
-export class NgxDateRangeModule {}
+export class NgxDateRangePickerModule {}

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { NgxDateRangeModule } from '../modules/ngx-daterange/src/ngx-daterange.module';
+import { NgxDateRangePickerModule } from '../modules/ngx-date-range-picker/src/ngx-date-range-picker.module';
 
 @NgModule({
 	declarations: [
@@ -11,7 +11,7 @@ import { NgxDateRangeModule } from '../modules/ngx-daterange/src/ngx-daterange.m
 	imports: [
 		BrowserModule,
 		FormsModule,
-		NgxDateRangeModule,
+		NgxDateRangePickerModule,
 		ReactiveFormsModule
 	],
 	providers: [],

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewEncapsulation } from '@angular/core';
-import * as momentNs from 'moment'; const moment = momentNs;
+import * as moment from 'moment';
 
 import { extendMoment, DateRange } from 'moment-range';
 import { IChangedData, IDateRange } from '../../interfaces';
@@ -21,17 +21,17 @@ export class CalendarComponent implements OnChanges {
 
 	@Input() year: number;
 
-	@Input() selectedFromDate: momentNs.Moment;
+	@Input() selectedFromDate: moment.Moment;
 
-	@Input() selectedToDate: momentNs.Moment;
+	@Input() selectedToDate: moment.Moment;
 
 	@Input() isLeft: boolean;
 
 	@Input() format: string;
 
-	@Input() minDate: momentNs.Moment;
+	@Input() minDate: moment.Moment;
 
-	@Input() maxDate: momentNs.Moment;
+	@Input() maxDate: moment.Moment;
 
 	@Input() singleCalendar = false;
 
@@ -53,7 +53,7 @@ export class CalendarComponent implements OnChanges {
 		// Set the right calendar month and year equal to the left calendar
 		// if the left calendar's date if after the right
 		if (!this.isLeft) {
-			let currentValue = changes?.selectedFromDate?.currentValue as unknown as momentNs.Moment;
+			let currentValue = changes?.selectedFromDate?.currentValue as unknown as moment.Moment;
 
 			if (currentValue) {
 				if (!moment.isMoment(currentValue)) {
@@ -97,8 +97,8 @@ export class CalendarComponent implements OnChanges {
 		for (let i = 0; i < weeks.length; i++) {
 			const weekNumber = weeks[i];
 
-			let firstWeekDay: momentNs.Moment = moment([this.year, this.month]).week(weekNumber).day(0);
-			let lastWeekDay: momentNs.Moment = moment([this.year, this.month]).week(weekNumber).day(6);
+			let firstWeekDay: moment.Moment = moment([this.year, this.month]).week(weekNumber).day(0);
+			let lastWeekDay: moment.Moment = moment([this.year, this.month]).week(weekNumber).day(6);
 
 			// Set year to the next year if the week number is lower than the starting week
 			// this indicates that the week is in January of the next year
@@ -123,7 +123,7 @@ export class CalendarComponent implements OnChanges {
 		weeksRange.map(week => {
 			const daysList = [];
 
-			Array.from(week.by('days')).forEach((day: momentNs.Moment) => {
+			Array.from(week.by('days')).forEach((day: moment.Moment) => {
 				if (day.isSame(this.minDate, 'date')) {
 					day = this.minDate;
 				}
@@ -140,11 +140,11 @@ export class CalendarComponent implements OnChanges {
 		this.weekList = weekList;
 	}
 
-	isDisabled(day: momentNs.Moment): boolean {
+	isDisabled(day: moment.Moment): boolean {
 		return (day.isBefore(this.minDate) || day.isAfter(this.maxDate)) || (day.isBefore(this.selectedFromDate) && !this.isLeft);
 	}
 
-	isDateAvailable(day: momentNs.Moment): boolean {
+	isDateAvailable(day: moment.Moment): boolean {
 		if (this.isLeft) {
 			return day.isSameOrBefore(this.selectedToDate, 'date') && !day.isSameOrBefore(this.minDate, 'date');
 		}
@@ -152,13 +152,13 @@ export class CalendarComponent implements OnChanges {
 		return day.isSameOrAfter(this.selectedFromDate, 'date') && !day.isSameOrAfter(this.maxDate, 'date');
 	}
 
-	isSelectedDate(day: momentNs.Moment): boolean {
+	isSelectedDate(day: moment.Moment): boolean {
 		const date = this.isLeft ? this.selectedFromDate : this.selectedToDate;
 
 		return date && day.isSame(date, 'date');
 	}
 
-	isDateInRange(day: momentNs.Moment): boolean {
+	isDateInRange(day: moment.Moment): boolean {
 		if (this.selectedFromDate && this.selectedToDate) {
 			const selectedRange = range(this.selectedFromDate, this.selectedToDate);
 
@@ -168,7 +168,7 @@ export class CalendarComponent implements OnChanges {
 		return false;
 	}
 
-	isDifferentMonth(day: momentNs.Moment): boolean {
+	isDifferentMonth(day: moment.Moment): boolean {
 		return day.get('month') !== this.month;
 	}
 

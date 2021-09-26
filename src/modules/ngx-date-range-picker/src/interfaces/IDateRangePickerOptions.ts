@@ -11,12 +11,10 @@ export interface IDateRangePickerOptions {
   disableInputDisplay?: boolean;
   format: string;
   icons?: 'default' | 'material' | 'font-awesome';
-  labelText?: string;
   minDate?: momentNs.Moment;
   maxDate?: momentNs.Moment;
   position?: 'left' | 'right';
   preDefinedRanges?: IDefinedDateRange[];
   showResetButton?: boolean;
   singleCalendar?: boolean;
-  validators?: ValidatorFn | ValidatorFn[];
 }

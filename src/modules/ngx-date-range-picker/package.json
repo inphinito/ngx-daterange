@@ -1,6 +1,6 @@
 {
-  "name": "ngx-daterange",
-  "version": "1.0.44",
+  "name": "ngx-date-range-picker",
+  "version": "1.1.0",
   "description": "Date-Range Selector for Angular",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alsoicode/ngx-daterange.git"
+    "url": "git+https://github.com/inphinito/ngx-date-range-picker.git"
   },
   "keywords": [
     "angular",
@@ -27,14 +27,15 @@
     "date range picker",
     "datepicker",
     "date picker",
-    "ngx-daterange"
+    "ngx-date-range-picker",
+    "bootstrap"
   ],
-  "author": "Brandon Taylor",
+  "author": "Carlos Morcillo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alsoicode/ngx-daterange/issues"
+    "url": "https://github.com/inphinito/ngx-date-range-picker/issues"
   },
-  "homepage": "https://github.com/alsoicode/ngx-daterange#readme",
+  "homepage": "https://github.com/inphinito/ngx-date-range-picker#readme",
   "$schema": "./node_modules/ng-packagr/package.schema.json",
   "peerDependencies": {
     "@angular/core": ">=4.0.0"
@@ -43,7 +44,7 @@
     "lib": {
       "entryFile": "src/public_api.ts"
     },
-    "dest": "../../../ngx-daterange/dist",
+    "dest": "../../../dist",
     "whitelistedNonPeerDependencies": [
       "moment",
       "moment-range"

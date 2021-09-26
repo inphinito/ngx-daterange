@@ -120,6 +120,6 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "directive-selector": [false, "attribute", "app", "camelCase"],
-    "component-selector": [false, "element", "app", "kebab-case"],
+    "component-selector": [false, "element", "app", "kebab-case"]
   }
 }

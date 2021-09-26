@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 
-import { DateRangePickerComponent } from '../modules/ngx-daterange/src/components/datepicker/date-range-picker.component';
-import { IDateRange, IDateRangePickerOptions } from '../modules/ngx-daterange/src/interfaces';
+import { DateRangePickerComponent } from '../modules/ngx-date-range-picker/src/components/datepicker/date-range-picker.component';
+import { IDateRange, IDateRangePickerOptions } from '../modules/ngx-date-range-picker/src/interfaces';
 @Component({
 	encapsulation: ViewEncapsulation.None,
 	selector: 'app-root',
@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
 
 	firstFieldEmittedValue: IDateRange;
 	firstFieldOptions: IDateRangePickerOptions = {
-		autoApply: false,
 		format: 'DD/MM/YYYY',
 		icons: 'font-awesome',
 		minDate: moment().subtract(10, 'years'),
@@ -37,8 +36,7 @@ export class AppComponent implements OnInit {
 					end: moment().subtract(2, 'week').endOf('week')
 				}
 			}
-		],
-		validators: Validators.required,
+		]
 	}
 
 	secondFieldOptions: IDateRangePickerOptions = {
@@ -63,7 +61,6 @@ export class AppComponent implements OnInit {
 		clickOutsideAllowed: false,
 		format: 'DD/MM/YYYY',
 		icons: 'material',
-		labelText: 'Single Picker',
 		minDate: moment().subtract(2, 'years'),
 		maxDate: moment().add(1, 'year'),
 		singleCalendar: true,
@@ -73,7 +70,6 @@ export class AppComponent implements OnInit {
 		disableInputDisplay: true,
 		format: 'DD/MM/YYYY',
 		icons: 'material',
-		labelText: 'Input Display Disabled',
 		minDate: moment().subtract(2, 'years'),
 		maxDate: moment().add(1, 'year')
 	};

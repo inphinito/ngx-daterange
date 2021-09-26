@@ -1,9 +1,9 @@
 <div class="dateRangePicker-wrapper">
-	<input [attr.id]="instanceId" class="form-control" type="text" [value]="displayValue">
+	<input class="form-control" type="text" [value]="displayValue" [disabled]="disabled">
 
 	<!-- Desktop Browsers -->
 	<div
-		[ngClass]="{'dateRangePicker': true, 'invisible': !showCalendars, 'dateRangePicker-single': options.singleCalendar, 'is-chrome': checkChrome(), 'open-left': options.position === 'left', 'open-right': options.position === 'right', 'mobile': isMobile }">
+		[ngClass]="{'dateRangePicker': true, 'invisible': !isOpen, 'dateRangePicker-single': options.singleCalendar, 'is-chrome': checkChrome(), 'open-left': options.position === 'left', 'open-right': options.position === 'right', 'mobile': isMobile }">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col">

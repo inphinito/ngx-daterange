@@ -4,7 +4,7 @@
 /dist
 /tmp
 /out-tsc
-/ngx-daterange/*
+/ngx-date-range-picker/*
 
 # dependencies
 /node_modules

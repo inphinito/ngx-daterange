@@ -1,10 +1,10 @@
-# Ngx Date Range
+# Ngx Date Range picker
 
-![ngx-daterange](https://res.cloudinary.com/alsoicode/image/upload/v1542168886/ngx-daterange/ngx-daterange.png)
+![ngx-date-range-picker](https://res.cloudinary.com/alsoicode/image/upload/v1542168886/ngx-date-range-picker/ngx-date-range-picker.png)
 
 Current version: 1.0.44
 
-Here's a minimal example of ngx-daterange in action, showing positioning on the left, right and using custom templating: https://ngx-daterange.netlify.app/
+[comment]: <> (Here's a minimal example of ngx-date-range-picker in action, showing positioning on the left, right and using custom templating: https://ngx-date-range-picker.netlify.app/)
 
 
 ## External Dependencies
@@ -25,13 +25,13 @@ If you are targeting older browsers, you may need to polyfill es7 arrays, specif
 
 Install from npm:
 
- - `npm install ngx-daterange --save`
+ - `npm install ngx-date-range-picker --save`
 
-Import and add the `NgxDateRangeModule` to your main module, or wherever applicable. Example:
+Import and add the `NgxDateRangePickerModule` to your main module, or wherever applicable. Example:
 
 ```TypeScript
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxDateRangeModule } from 'ngx-daterange';
+import { NgxDateRangePickerModule } from 'ngx-date-range-picker';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,7 @@ import { NgxDateRangeModule } from 'ngx-daterange';
   imports: [
     ...
     FormsModule,
-    NgxDateRangeModule,
+    NgxDateRangePickerModule,
     ReactiveFormsModule,
   ],
   providers: [],
@@ -49,15 +49,15 @@ import { NgxDateRangeModule } from 'ngx-daterange';
 export class AppModule { }
 ```
 
-ngx-daterange is implemented as a single text input that displays one, or two calendars depending on your options. It may be implemented with, or without options in your component as such:
+ngx-date-range-picker is implemented as a single text input that displays one, or two calendars depending on your options. It may be implemented with, or without options in your component as such:
 
 ```HTML
 <date-range-picker [options]="options" [parentFormGroup]="form" [controlName]="'myDateRange'"></date-range-picker>
 ```
 
-By default, ngx-daterange will assign a control name of "dateRange", however you may override this with the `[controlName]` input.
+By default, ngx-date-range-picker will assign a control name of "dateRange", however you may override this with the `[controlName]` input.
 
-ngx-daterange assumes that you have a `FormGroup` instance that you are adding it to, and as such expects you to pass in the FormGroup via the `[parentFormGroup]` input.
+ngx-date-range-picker assumes that you have a `FormGroup` instance that you are adding it to, and as such expects you to pass in the FormGroup via the `[parentFormGroup]` input.
 
 ### Populating Existing Dates
 
@@ -87,14 +87,14 @@ A content slot is provided to override the default text input. Here's an example
 
 You must supply one additional input: `[instanceId]`, which must correspond to the `id` of the input. Otherwise, the calendar(s) won't be displayed when the input is clicked.
 
-To access the ngx-daterange instance, assign a template variable (`#dateRangePicker` in the sample code) so that you may access the `range` value to bind to your input's `[value]`.
+To access the ngx-date-range-picker instance, assign a template variable (`#dateRangePicker` in the sample code) so that you may access the `range` value to bind to your input's `[value]`.
 
 The value you use for the `[controlName]` must correspond to the `name` property of the input, or use "dateRange" as the name of the input to match the default value in the component. Otherwise, the control won't be able to be added to your FormGroup instance.
 
 
 ## Styling
 
-ngx-daterange's default templating and styling is *dependent* on Bootstrap 4.x
+ngx-date-range-picker's default templating and styling is *dependent* on Bootstrap 4.x
 
 - Manual date inputs are hidden for mobile devices. Specifically, these are User Agents matching: Android, webOS, iPhone, iPod, Blackberry and Windows Phone.
 
@@ -102,7 +102,7 @@ ngx-daterange's default templating and styling is *dependent* on Bootstrap 4.x
 
 ## Date Range Picker Options
 
-Most settings are optional and an interface, [IDateRangePickerOptions](https://github.com/alsoicode/ngx-daterange/blob/master/src/modules/ngx-daterange/src/interfaces/IDateRangePickerOptions.ts) is provided for your convenience.  Here are all of the settings currently enabled:
+Most settings are optional and an interface, [IDateRangePickerOptions](https://github.com/alsoicode/ngx-date-range-picker/blob/master/src/modules/ngx-date-range-picker/src/interfaces/IDateRangePickerOptions.ts) is provided for your convenience.  Here are all of the settings currently enabled:
 
 ### autoApply
 
@@ -246,7 +246,7 @@ Default value: not specified
 
 ## Event Emitters
 
-When a date is specified, an [IDateRange](https://github.com/alsoicode/ngx-daterange/blob/master/src/modules/ngx-daterange/src/interfaces/IDateRange.ts) object is emitted via the `rangeSelected` function.
+When a date is specified, an [IDateRange](https://github.com/alsoicode/ngx-date-range-picker/blob/master/src/modules/ngx-date-range-picker/src/interfaces/IDateRange.ts) object is emitted via the `rangeSelected` function.
 
 When the datepicker is reset, a `datepickerReset` event is emitted.
 
