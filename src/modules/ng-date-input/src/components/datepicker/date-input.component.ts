@@ -63,14 +63,15 @@ export class DateInputComponent implements OnInit, ControlValueAccessor {
 	clickout(event: any) {
 		if (this.isOpen && !this._elementRef.nativeElement.contains(event.target)) {
 			this.isOpen = false;
-		} else if (!this.isOpen && this._elementRef.nativeElement.contains(event.target) && !this.disabled) {
+		} else if (!this.isOpen && !this.readOnly && this._elementRef.nativeElement.contains(event.target) && !this.disabled) {
 			this.isOpen = true;
 		}
 	}
 
 	value: [string, string] = [null, null];
 
-	disabled: boolean = false;
+	@Input() disabled: boolean = false;
+	@Input() readOnly: boolean = false;
 
 	constructor(
 		private _elementRef: ElementRef

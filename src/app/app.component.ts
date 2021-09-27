@@ -76,6 +76,7 @@ export class AppComponent implements OnInit {
 
 	dateRange2: [string, string] = ["2021-09-02", "2021-09-24"];
 	dateRange3: string = "2003-06-01";
+	dateRange4: string = "2003-06-01";
 
 	constructor(
 		private formBuilder: FormBuilder,

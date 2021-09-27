@@ -24,6 +24,14 @@
 		</div>
 		<pre>{{ dateRange3 | json }}</pre>
 	</div>
+
+	<div class="mb-4">
+		<h3>ReadOnly</h3>
+		<div class="mb-3">
+			<date-input [(ngModel)]="dateRange4" [readOnly]="true"></date-input>
+		</div>
+		<pre>{{ dateRange4 | json }}</pre>
+	</div>
 </div>
 <!-- <div class="container-fluid">
 	<pre>{{form.value | json}}</pre>
