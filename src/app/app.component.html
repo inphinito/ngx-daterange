@@ -1,11 +1,29 @@
 <div class="container">
-	<form [formGroup]="form">
-		<fieldset>
-			<date-range-picker #dateRangePicker [options]="firstFieldOptions" formControlName="firstDateRange"
-				(rangeSelected)="onRangeSelected($event)"></date-range-picker>
-		</fieldset>
-	</form>
-	<pre>{{ form.value | json }}</pre>
+	<div class="mb-4">
+		<h3>FormControl</h3>
+		<form [formGroup]="form">
+			<fieldset>
+				<date-input #dateRangePicker [options]="firstFieldOptions" formControlName="firstDateRange"
+					(rangeSelected)="onRangeSelected($event)" [range]="true"></date-input>
+			</fieldset>
+		</form>
+		<pre>{{ form.value | json }}</pre>
+	</div>
+	<div class="mb-4">
+		<h3>NgModel</h3>
+		<div class="mb-3">
+			<date-input [(ngModel)]="dateRange2" [range]="true"></date-input>
+		</div>
+		<pre>{{ dateRange2 | json }}</pre>
+	</div>
+
+	<div class="mb-4">
+		<h3>Single calendar</h3>
+		<div class="mb-3">
+			<date-input [(ngModel)]="dateRange3"></date-input>
+		</div>
+		<pre>{{ dateRange3 | json }}</pre>
+	</div>
 </div>
 <!-- <div class="container-fluid">
 	<pre>{{form.value | json}}</pre>
@@ -18,8 +36,8 @@
 		<div class="col-12 col-sm-2">
 			<form enctype="application/x-www-form-urlencoded" role="form">
 				<fieldset>
-					<date-range-picker #dateRangePicker [options]="firstFieldOptions" [parentFormGroup]="form"
-						[controlName]="'firstDateRange'" (rangeSelected)="onRangeSelected($event)"></date-range-picker>
+					<date-input #dateRangePicker [options]="firstFieldOptions" [parentFormGroup]="form"
+						[controlName]="'firstDateRange'" (rangeSelected)="onRangeSelected($event)"></date-input>
 					<p style="color: red;"
 						*ngIf="form.controls.firstDateRange.touched && form.controls.firstDateRange.hasError('required')">
 						This field is required</p>
@@ -33,8 +51,8 @@
 			<p>Datepicker will open from the right</p>
 			<form enctype="application/x-www-form-urlencoded" role="form">
 				<fieldset>
-					<date-range-picker [options]="rightFieldOptions" [parentFormGroup]="form"
-						[controlName]="'rightDateRange'"></date-range-picker>
+					<date-input [options]="rightFieldOptions" [parentFormGroup]="form"
+						[controlName]="'rightDateRange'"></date-input>
 				</fieldset>
 			</form>
 		</div>
@@ -43,7 +61,7 @@
 		<div class="col-12 col-sm-2">
 			<form enctype="application/x-www-form-urlencoded" role="form" [formGroup]="form" *ngIf="form">
 				<fieldset>
-					<date-range-picker [instanceId]="'secondDateRange'" [options]="secondFieldOptions"
+					<date-input [instanceId]="'secondDateRange'" [options]="secondFieldOptions"
 						[parentFormGroup]="form" [controlName]="'secondDateRange'" #dateRangePicker>
 						<div class="form-group">
 							<label for="secondDateRange">You can also use a custom template</label>
@@ -58,7 +76,7 @@
 									formControlName="secondDateRange" />
 							</div>
 						</div>
-					</date-range-picker>
+					</date-input>
 					<p>This datepicker has the &#8220;clickOutsideAllowed&#8221; feature set to false. It will close on
 						a click outside of the component.</p>
 				</fieldset>
@@ -69,8 +87,8 @@
 		<div class="col col-sm-2">
 			<form enctype="application/x-www-form-urlencoded" role="form">
 				<fieldset>
-					<date-range-picker [options]="singleFieldOptions" [parentFormGroup]="form"
-						controlName="'singleField'" (rangeSelected)="onRangeSelected($event)"></date-range-picker>
+					<date-input [options]="singleFieldOptions" [parentFormGroup]="form"
+						controlName="'singleField'" (rangeSelected)="onRangeSelected($event)"></date-input>
 				</fieldset>
 			</form>
 		</div>
@@ -79,9 +97,9 @@
 		<div class="col col-sm-2">
 			<form enctype="application/x-www-form-urlencoded" role="form">
 				<fieldset>
-					<date-range-picker [options]="disableInputDisplayOptions" [parentFormGroup]="form"
+					<date-input [options]="disableInputDisplayOptions" [parentFormGroup]="form"
 						controlName="'disableInputDisplayField'" (rangeSelected)="onRangeSelected($event)">
-					</date-range-picker>
+					</date-input>
 					<p>This datepicker has the &#8220;disableInputDisplay&#8221; feature set to true. The input field
 						shown here is disabled, preventing manual editing, but still allowing the DatePicker to be used
 						and displaying the selected range.</p>

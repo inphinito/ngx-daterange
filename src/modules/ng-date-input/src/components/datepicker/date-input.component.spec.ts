@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'
 import * as moment from 'moment';
 
 import { CalendarComponent } from '../calendar/calendar.component';
-import { DateRangePickerComponent } from './date-range-picker.component';
+import { DateInputComponent } from './date-input.component';
 import { defaultDateRangePickerOptions } from '../../constants';
 import { IDateRangePickerOptions } from '../../interfaces';
 import { FormatMomentDatePipe } from '../../pipes/format-moment-date.pipe';
@@ -17,16 +17,16 @@ const simpleOptions: IDateRangePickerOptions = {
   preDefinedRanges: null,
 }
 
-describe('Testing DateRangePickerComponent', () => {
+describe('Testing DateInputComponent', () => {
 
-  let component: DateRangePickerComponent;
-  let fixture: ComponentFixture<DateRangePickerComponent>;
+  let component: DateInputComponent;
+  let fixture: ComponentFixture<DateInputComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         CalendarComponent,
-        DateRangePickerComponent,
+        DateInputComponent,
         FormatMomentDatePipe,
       ],
       imports: [
@@ -37,7 +37,7 @@ describe('Testing DateRangePickerComponent', () => {
     })
     .compileComponents()
     .then(() => {
-      fixture = TestBed.createComponent(DateRangePickerComponent);
+      fixture = TestBed.createComponent(DateInputComponent);
       component = fixture.componentInstance;
     });
   }));
@@ -47,7 +47,7 @@ describe('Testing DateRangePickerComponent', () => {
     component = null;
   });
 
-  it('The NgxDateRangePicker Component should initialize', waitForAsync(() => {
+  it('The NgDateInput Component should initialize', waitForAsync(() => {
     fixture.detectChanges();
 
     expect(component).toBeDefined();

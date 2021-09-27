@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CalendarComponent } from './components/calendar/calendar.component';
-import { DateRangePickerComponent } from './components/datepicker/date-range-picker.component';
+import { DateInputComponent } from './components/datepicker/date-input.component';
 import { FormatMomentDatePipe } from './pipes/format-moment-date.pipe';
 
 const declarations = [
   CalendarComponent,
-  DateRangePickerComponent,
+  DateInputComponent,
   FormatMomentDatePipe,
 ];
 
@@ -21,4 +21,4 @@ const declarations = [
     ReactiveFormsModule,
   ],
 })
-export class NgxDateRangePickerModule {}
+export class NgDateInputModule {}

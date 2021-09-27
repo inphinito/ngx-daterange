@@ -3,14 +3,14 @@
 
 	<!-- Desktop Browsers -->
 	<div
-		[ngClass]="{'dateRangePicker': true, 'invisible': !isOpen, 'dateRangePicker-single': options.singleCalendar, 'is-chrome': checkChrome(), 'open-left': options.position === 'left', 'open-right': options.position === 'right', 'mobile': isMobile }">
+		[ngClass]="{'dateRangePicker': true, 'invisible': !isOpen, 'dateRangePicker-single': !range, 'is-chrome': checkChrome(), 'open-left': options.position === 'left', 'open-right': options.position === 'right', 'mobile': isMobile }">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col">
 
 					<!-- Manual Inputs -->
 					<ng-container *ngIf="!isMobile">
-						<div class="row form-inputs mb-0" *ngIf="!options.singleCalendar">
+						<div class="row form-inputs mb-0" *ngIf="range">
 							<div class="col">
 								<div *ngIf="options.icons !== 'default'">
 									<div
@@ -56,17 +56,16 @@
 
 					<!-- Calendars -->
 					<div class="row row-calendars">
-						<div [ngClass]="{ 'col-12': true, 'col-sm-6': !isMobile && !options.singleCalendar }">
-							<calendar [ngClass]="{ 'calendar': true, 'calendar-single': options.singleCalendar }"
-								[isLeft]="true" [month]="fromMonth" [year]="fromYear"
-								(monthChanged)=monthChanged($event) (yearChanged)="yearChanged($event)"
-								(dateChanged)="dateChanged($event)" [format]="options.format"
-								[selectedFromDate]="fromDate" [selectedToDate]="toDate" [minDate]="options.minDate"
-								[maxDate]="options.maxDate" [singleCalendar]="options.singleCalendar"
+						<div [ngClass]="{ 'col-12': true, 'col-sm-6': !isMobile && range }">
+							<calendar [ngClass]="{ 'calendar': true, 'calendar-single': !range }" [isLeft]="true"
+								[month]="fromMonth" [year]="fromYear" (monthChanged)=monthChanged($event)
+								(yearChanged)="yearChanged($event)" (dateChanged)="dateChanged($event)"
+								[format]="options.format" [selectedFromDate]="fromDate" [selectedToDate]="toDate"
+								[minDate]="options.minDate" [maxDate]="options.maxDate" [singleCalendar]="!range"
 								[icons]="options.icons"></calendar>
 						</div>
 						<div [ngClass]="{ 'col-12': true, 'col-sm-6': !isMobile, 'col__mobile': isMobile }"
-							*ngIf="!options.singleCalendar">
+							*ngIf="range">
 							<calendar class="calendar" [month]="toMonth" [year]="toYear" [format]="options.format"
 								(dateChanged)="dateChanged($event)" (monthChanged)="monthChanged($event)"
 								(yearChanged)="yearChanged($event)" [selectedFromDate]="fromDate"
@@ -81,7 +80,7 @@
 			<div class="row text-center my-3">
 				<div class="col">
 					<div class="row mb-2"
-						*ngIf="!options.singleCalendar && options.preDefinedRanges && options.preDefinedRanges.length > 0">
+						*ngIf="range && options.preDefinedRanges && options.preDefinedRanges.length > 0">
 						<div class="col">
 							<button type="button" *ngFor="let range of options.preDefinedRanges" class="btn btn-link"
 								(click)="applyPredefinedRange($event, range)">{{ range.name }}</button>
